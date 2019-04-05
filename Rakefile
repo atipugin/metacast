@@ -4,3 +4,11 @@
 require_relative 'config/application'
 
 Rails.application.load_tasks
+
+if Rails.env.in?(%w[development test])
+  require 'rubocop/rake_task'
+
+  RuboCop::RakeTask.new(:rubocop) do |task|
+    task.patterns = %w[{app,lib}/**/*.rb]
+  end
+end
