@@ -1,0 +1,15 @@
+doctype html
+html lang=I18n.locale
+  head
+    meta charset='utf-8'
+    meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'
+    = csrf_meta_tags
+    = csp_meta_tag
+    = display_meta_tags site: t('app_name'), reverse: true
+
+    = stylesheet_link_tag 'application'
+
+  body
+    == yield
+
+    = javascript_include_tag 'application'
