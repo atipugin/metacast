@@ -7,10 +7,12 @@ class PodcastsController < ApplicationController
   end
 
   def new
+    authorize(Podcast)
     @podcast = Podcast.new
   end
 
   def create
+    authorize(Podcast)
     @podcast = Podcast.new(podcast_params.merge(user: current_user))
     if @podcast.save
       redirect_to podcast_path(@podcast), notice: t('.notice')
@@ -19,11 +21,16 @@ class PodcastsController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    authorize(@podcast)
+  end
 
-  def edit; end
+  def edit
+    authorize(@podcast)
+  end
 
   def update
+    authorize(@podcast)
     if @podcast.update(podcast_params)
       redirect_to edit_podcast_path(@podcast), notice: t('.notice')
     else
@@ -32,6 +39,7 @@ class PodcastsController < ApplicationController
   end
 
   def destroy
+    authorize(@podcast)
     @podcast.destroy
     redirect_to podcasts_path, notice: t('.notice')
   end
