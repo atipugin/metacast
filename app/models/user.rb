@@ -10,5 +10,7 @@
 #
 
 class User < ApplicationRecord
+  has_many :podcasts, dependent: :destroy
+
   devise :database_authenticatable, :registerable, :validatable
 end
