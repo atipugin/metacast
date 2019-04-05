@@ -1,5 +1,6 @@
 - title @podcast.title
 
 h1 = @podcast.title
+= rss_podcast_url(@podcast.token)
 
 = link_to t('.edit'), edit_podcast_path(@podcast), class: 'btn btn-primary'

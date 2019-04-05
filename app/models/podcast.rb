@@ -7,12 +7,15 @@
 #  updated_at :datetime         not null
 #  user_id    :bigint(8)        not null
 #  title      :string           not null
+#  token      :string           not null
 #
 
 class Podcast < ApplicationRecord
   belongs_to :user
 
   validates :title, presence: true
+
+  has_secure_token
 
   normalize :title
 end

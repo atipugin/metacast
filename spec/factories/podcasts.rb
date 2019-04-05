@@ -7,6 +7,7 @@
 #  updated_at :datetime         not null
 #  user_id    :bigint(8)        not null
 #  title      :string           not null
+#  token      :string           not null
 #
 
 FactoryBot.define do
