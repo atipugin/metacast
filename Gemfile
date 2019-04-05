@@ -12,5 +12,6 @@ gem 'slim-rails'
 gem 'uglifier', '>= 1.3.0'
 
 group :development, :test do
+  gem 'i18n-tasks', '~> 0.9.29', require: false
   gem 'rubocop', '~> 0.67.2', require: false
 end
