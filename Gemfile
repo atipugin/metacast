@@ -4,6 +4,7 @@ ruby '2.6.2'
 
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap', '~> 4.3.1'
+gem 'devise'
 gem 'jquery-rails'
 gem 'meta-tags'
 gem 'pg', '>= 0.18', '< 2.0'
