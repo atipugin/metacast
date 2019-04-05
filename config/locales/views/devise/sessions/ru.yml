@@ -1,0 +1,7 @@
+---
+ru:
+  devise:
+    sessions:
+      new:
+        submit: Войти
+        title: Вход

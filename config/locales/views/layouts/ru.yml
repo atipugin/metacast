@@ -1,0 +1,7 @@
+---
+ru:
+  layouts:
+    application:
+      sign_in: Вход
+      sign_out: Выход
+      sign_up: Регистрация

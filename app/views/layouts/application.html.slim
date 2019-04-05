@@ -17,10 +17,25 @@ html lang=I18n.locale
           span.navbar-toggler-icon
 
         #menu.collapse.navbar-collapse
-          / ...
+          ul.navbar-nav.ml-auto
+            - if user_signed_in?
+              li.nav-item
+                = link_to t('.sign_out'), destroy_user_session_path, class: 'nav-link', method: Devise.sign_out_via
+            - else
+              - with_options wrap_tag: 'li', wrap_class: 'nav-item', class: 'nav-link' do |wo|
+                = wo.active_link_to t('.sign_in'), new_user_session_path
+                = wo.active_link_to t('.sign_up'), new_user_registration_path
 
     main.py-3
       .container
+        - if flash.present?
+          - flash.each do |key, message|
+            - if key.in? %w[alert notice]
+              .alert.alert-dismissible.fade.show class=bootstrap_alert_class_for(key)
+                = message
+                = button_tag class: 'close', type: 'button', data: { dismiss: 'alert' } do
+                  span &times;
+
         == yield
 
     footer.py-3

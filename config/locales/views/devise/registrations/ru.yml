@@ -1,0 +1,7 @@
+---
+ru:
+  devise:
+    registrations:
+      new:
+        submit: Создать аккаунт
+        title: Регистрация
