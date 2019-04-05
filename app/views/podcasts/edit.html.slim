@@ -1,0 +1,8 @@
+- title t('.title')
+
+h1 = t '.title'
+= bootstrap_form_for @podcast do |f|
+  == render 'form', f: f
+  = f.primary t('.submit')
+
+= link_to t('.destroy'), podcast_path(@podcast), class: 'btn btn-danger', method: :delete

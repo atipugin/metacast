@@ -1,0 +1,22 @@
+---
+ru:
+  podcasts:
+    create:
+      notice: Подкаст успешно создан.
+    destroy:
+      notice: Подкаст успешно удален.
+    edit:
+      destroy: Удалить
+      submit: Сохранить
+      title: Настройки подкаста
+    index:
+      empty: Подкастов не найдено.
+      new: Добавить
+      title: Мои подкасты
+    new:
+      submit: Создать
+      title: Новый подкаст
+    show:
+      edit: Редактировать
+    update:
+      notice: Подкаст успешно обновлен.

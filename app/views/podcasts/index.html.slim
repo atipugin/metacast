@@ -1,0 +1,9 @@
+- title t('.title')
+
+h1 = t '.title'
+- if @podcasts.present?
+  == render @podcasts
+- else
+  p = t '.empty'
+
+= link_to t('.new'), new_podcast_path, class: 'btn btn-primary'
