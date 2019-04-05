@@ -10,6 +10,22 @@ html lang=I18n.locale
     = stylesheet_link_tag 'application'
 
   body
-    == yield
+    nav.navbar.navbar-expand-lg.navbar-light
+      .container
+        = link_to t('app_name'), root_path, class: 'navbar-brand'
+        = button_tag class: 'navbar-toggler', type: 'button', data: { toggle: 'collapse', target: '#menu' } do
+          span.navbar-toggler-icon
+
+        #menu.collapse.navbar-collapse
+          / ...
+
+    main.py-3
+      .container
+        == yield
+
+    footer.py-3
+      .container
+        | &copy;
+        =< Date.today.year
 
     = javascript_include_tag 'application'
