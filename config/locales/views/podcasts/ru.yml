@@ -18,5 +18,9 @@ ru:
       title: Новый подкаст
     show:
       edit: Редактировать
+      episodes:
+        empty: Эпизодов не найдено.
+      new_episode:
+        submit: Добавить
     update:
       notice: Подкаст успешно обновлен.

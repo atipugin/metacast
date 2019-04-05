@@ -1,0 +1,6 @@
+---
+ru:
+  activerecord:
+    attributes:
+      episode:
+        source_url: Ссылка на источник

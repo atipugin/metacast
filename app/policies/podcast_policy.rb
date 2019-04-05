@@ -4,7 +4,7 @@ class PodcastPolicy < ApplicationPolicy
   end
 
   def show?
-    record.user_id = user.id
+    record.user_id == user.id
   end
 
   def update?

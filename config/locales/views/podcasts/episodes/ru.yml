@@ -1,0 +1,6 @@
+---
+ru:
+  podcasts:
+    episodes:
+      create:
+        notice: Эпизод успешно создан.

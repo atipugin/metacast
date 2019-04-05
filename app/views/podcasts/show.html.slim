@@ -3,4 +3,13 @@
 h1 = @podcast.title
 = rss_podcast_url(@podcast.token)
 
+= bootstrap_form_for [@podcast, Episode.new] do |f|
+  = f.url_field :source_url
+  = f.primary t('.new_episode.submit')
+
+- if @podcast.episodes.present?
+  ul == render @podcast.episodes
+- else
+  = t '.episodes.empty'
+
 = link_to t('.edit'), edit_podcast_path(@podcast), class: 'btn btn-primary'

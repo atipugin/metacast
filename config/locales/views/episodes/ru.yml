@@ -1,0 +1,7 @@
+---
+ru:
+  episodes:
+    destroy:
+      notice: Эпизод успешно удален.
+    episode:
+      destroy: Удалить
