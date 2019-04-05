@@ -12,3 +12,7 @@ if Rails.env.in?(%w[development test])
     task.patterns = %w[{app,lib}/**/*.rb]
   end
 end
+
+if Rails.env.development?
+  Annotate.load_tasks
+end

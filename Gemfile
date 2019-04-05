@@ -19,3 +19,7 @@ group :development, :test do
   gem 'i18n-tasks', '~> 0.9.29', require: false
   gem 'rubocop', '~> 0.67.2', require: false
 end
+
+group :development do
+  gem 'annotate'
+end
