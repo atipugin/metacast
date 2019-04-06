@@ -1,8 +1,17 @@
 - title t('.title')
 
-h1 = t '.title'
-= bootstrap_form_for @podcast do |f|
-  == render 'form', f: f
-  = f.primary t('.submit')
+.row
+  .col-lg-4
+    .card.border-danger.mb-3
+      .card-body
+        p.card-text = t('.destroy.text')
+        = link_to t('.destroy.link'), podcast_path, class: 'card-link text-danger', method: :delete
 
-= link_to t('.destroy'), podcast_path(@podcast), class: 'btn btn-danger', method: :delete
+  .col-lg-8
+    .border-bottom.mb-3
+      h1.h3 = t '.title'
+
+    .mb-3
+      = bootstrap_form_for @podcast do |f|
+        == render 'form', f: f
+        = f.primary t('.submit')

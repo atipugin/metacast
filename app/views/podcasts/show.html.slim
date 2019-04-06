@@ -1,15 +1,42 @@
 - title @podcast.title
 
-h1 = @podcast.title
-= rss_podcast_url(@podcast.token)
+.row
+  .col-lg-4
+    .card.mb-3
+      .card-body
+        h1.card-title.h4 = @podcast.title
+        = link_to t('.edit'), edit_podcast_path(@podcast), class: 'card-link'
 
-= bootstrap_form_for [@podcast, Episode.new] do |f|
-  = f.url_field :source_url
-  = f.primary t('.new_episode.submit')
+    .mb-3
+      = button_tag t('.add_episode'), class: 'btn btn-primary btn-block', type: 'button', data: { toggle: 'modal', target: '#new-episode' }
+      #new-episode.modal.fade
+        .modal-dialog
+          .modal-content
+            .modal-header
+              h3.modal-title.h5 = t '.new_episode.title'
+              = button_tag raw('&times;'), class: 'close', type: 'button', data: { dismiss: 'modal' }
 
-- if @podcast.episodes.present?
-  ul == render @podcast.episodes
-- else
-  = t '.episodes.empty'
+            .modal-body
+              = bootstrap_form_for [@podcast, Episode.new] do |f|
+                = f.url_field :source_url
+                = f.primary t('.new_episode.submit')
 
-= link_to t('.edit'), edit_podcast_path(@podcast), class: 'btn btn-primary'
+    .mb-3
+      = label_tag 'rss-url', t('.rss_url'), class: 'form-label'
+      .input-group
+        = text_field_tag nil, rss_podcast_url(@podcast.token), class: 'form-control', id: 'rss-url'
+        .input-group-append
+          = button_tag class: 'btn btn-secondary js-clipboard', type: 'button', data: { clipboard_target: '#rss-url' } do
+            = icon 'far', 'copy'
+
+  .col-lg-8
+    .border-bottom.mb-3
+      h2.h3 = t '.episodes.title'
+
+    .card
+      - if @podcast.episodes.present?
+        .list-group.list-group-flush
+          == render @podcast.episodes
+      - else
+        .card-body
+          p.card-text.text-muted = t '.episodes.empty'

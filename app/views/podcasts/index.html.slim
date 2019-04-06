@@ -1,9 +1,16 @@
 - title t('.title')
 
-h1 = t '.title'
-- if @podcasts.present?
-  == render @podcasts
-- else
-  p = t '.empty'
+.row
+  .col-lg-8.offset-lg-2
+    .border-bottom.mb-3
+      h1.h3 = t '.title'
 
-= link_to t('.new'), new_podcast_path, class: 'btn btn-primary'
+    .card.mb-3
+      - if @podcasts.present?
+        .list-group.list-group-flush
+          == render @podcasts
+      - else
+        .card-body
+          p.card-text.text-muted = t '.empty'
+
+    = link_to t('.new'), new_podcast_path, class: 'btn btn-primary'

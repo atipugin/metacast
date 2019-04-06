@@ -1,3 +1,5 @@
-li
-  = episode.source_url
-  = link_to t('.destroy'), episode_path(episode), method: :delete
+.list-group-item
+  p = episode.source_url
+  ul.list-inline.mb-0
+    li.list-inline-item
+      = link_to t('.destroy'), episode_path(episode), class: 'text-danger', method: :delete

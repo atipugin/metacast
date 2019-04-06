@@ -6,7 +6,9 @@ ru:
     destroy:
       notice: Подкаст успешно удален.
     edit:
-      destroy: Удалить
+      destroy:
+        link: Удалить подкаст
+        text: Если этот подкаст вам больше не нужено, вы можете его удалить.
       submit: Сохранить
       title: Настройки подкаста
     index:
@@ -17,10 +19,14 @@ ru:
       submit: Создать
       title: Новый подкаст
     show:
+      add_episode: Добавить эпизод
       edit: Редактировать
       episodes:
         empty: Эпизодов не найдено.
+        title: Эпизоды
       new_episode:
         submit: Добавить
+        title: Новый эпизод
+      rss_url: Ссылка на подкаст
     update:
       notice: Подкаст успешно обновлен.
