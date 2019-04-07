@@ -50,7 +50,7 @@ module Episodes
       end
 
       it 'assigns description' do
-        expect { service.perform }.to change(episode, :title)
+        expect { service.perform }.to change(episode, :description)
       end
 
       context 'when there is not audio' do
@@ -58,10 +58,6 @@ module Episodes
 
         it 'fails the episode' do
           expect { service.perform }.to change(episode, :state).to('failed')
-        end
-
-        it 'does not assign audio' do
-          expect { service.perform }.not_to change(episode, :audio_url)
         end
       end
     end
