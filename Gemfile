@@ -22,6 +22,7 @@ gem 'pundit'
 gem 'rails', '~> 5.2.3'
 gem 'russian'
 gem 'sass-rails', '~> 5.0'
+gem 'sidekiq'
 gem 'slim-rails'
 gem 'uglifier', '>= 1.3.0'
 
