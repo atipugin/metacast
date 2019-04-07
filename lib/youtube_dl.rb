@@ -22,6 +22,14 @@ class YoutubeDl
     @data['thumbnail']
   end
 
+  def title
+    @data['title']
+  end
+
+  def description
+    @data['description']
+  end
+
   private
 
   def command

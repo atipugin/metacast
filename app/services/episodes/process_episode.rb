@@ -27,7 +27,12 @@ module Episodes
     end
 
     def attributes
-      { audio: audio_file, remote_image_url: youtube_dl.image_url }
+      {
+        audio: audio_file,
+        remote_image_url: youtube_dl.image_url,
+        title: youtube_dl.title,
+        description: youtube_dl.description
+      }
     end
 
     def audio_file
