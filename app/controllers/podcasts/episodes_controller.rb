@@ -4,10 +4,11 @@ module Podcasts
     before_action :find_podcast
     before_action :authorize_podcast
 
-    def create
+    def create # rubocop:disable Metrics/AbcSize
       authorize(Episode)
       episode = @podcast.episodes.new(episode_params)
       if episode.save
+        Episodes::ProcessEpisodeWorker.perform_async(episode.id)
         flash[:notice] = t('.notice')
       else
         flash[:alert] = episode.errors.full_messages.first

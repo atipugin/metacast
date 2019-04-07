@@ -4,3 +4,4 @@ verbose: true
 queues:
   - default
   - mailers
+  - episodes
