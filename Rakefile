@@ -9,7 +9,8 @@ if Rails.env.in?(%w[development test])
   require 'rubocop/rake_task'
 
   RuboCop::RakeTask.new(:rubocop) do |task|
-    task.patterns = %w[{app,lib}/**/*.rb]
+    task.patterns = %w[{app,lib}/**/*.rb spec/**/*_spec.rb]
+    task.requires << 'rubocop-rspec'
   end
 end
 

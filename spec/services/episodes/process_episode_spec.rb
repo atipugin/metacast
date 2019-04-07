@@ -2,7 +2,7 @@ require 'rails_helper'
 
 module Episodes
   RSpec.describe ProcessEpisode do
-    subject { described_class.new(episode: episode) }
+    subject(:service) { described_class.new(episode: episode) }
 
     let(:episode) { build(:episode) }
 
@@ -12,7 +12,7 @@ module Episodes
 
     describe '#perform' do
       it 'processes the episode' do
-        expect { subject.perform }.to change(episode, :state).to('processed')
+        expect { service.perform }.to change(episode, :state).to('processed')
       end
     end
   end
