@@ -7,6 +7,7 @@
 #  updated_at :datetime         not null
 #  podcast_id :bigint(8)        not null
 #  source_url :string           not null
+#  state      :string           not null
 #
 
 FactoryBot.define do
