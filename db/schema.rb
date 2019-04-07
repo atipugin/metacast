@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_07_071517) do
+ActiveRecord::Schema.define(version: 2019_04_07_122617) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 2019_04_07_071517) do
     t.bigint "podcast_id", null: false
     t.string "source_url", null: false
     t.string "state", null: false
+    t.string "audio"
+    t.string "image"
     t.index ["podcast_id"], name: "index_episodes_on_podcast_id"
   end
 

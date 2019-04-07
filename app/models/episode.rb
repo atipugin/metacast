@@ -8,6 +8,8 @@
 #  podcast_id :bigint(8)        not null
 #  source_url :string           not null
 #  state      :string           not null
+#  audio      :string
+#  image      :string
 #
 
 class Episode < ApplicationRecord
@@ -32,4 +34,7 @@ class Episode < ApplicationRecord
       transitions from: :pending, to: :failed
     end
   end
+
+  mount_uploader :audio, AudioUploader
+  mount_uploader :image, ImageUploader
 end

@@ -7,6 +7,7 @@ gem 'active_link_to'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap', '~> 4.3.1'
 gem 'bootstrap_form', '>= 4.2.0'
+gem 'carrierwave'
 gem 'clipboard-rails'
 gem 'devise'
 gem 'devise-i18n'
@@ -39,4 +40,5 @@ end
 
 group :test do
   gem 'database_cleaner'
+  gem 'webmock'
 end

@@ -4,3 +4,10 @@ Style/Documentation:
 
 Style/FrozenStringLiteralComment:
   Enabled: false
+
+Style/SpecialGlobalVars:
+  Enabled: false
+
+Metrics/BlockLength:
+  ExcludedMethods:
+    - describe

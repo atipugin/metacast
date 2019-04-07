@@ -1,0 +1,2 @@
+class AudioUploader < ApplicationUploader
+end
