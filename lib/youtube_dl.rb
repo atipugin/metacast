@@ -3,11 +3,10 @@ require 'open3'
 class YoutubeDl
   class Error < StandardError; end
 
-  attr_reader :url, :output
+  attr_reader :url
 
-  def initialize(url:, output:)
+  def initialize(url)
     @url = url
-    @output = output
     @data = {}
   end
 
@@ -16,6 +15,11 @@ class YoutubeDl
     raise Error, stderr if status.exitstatus.nonzero?
 
     @data = JSON.parse(stdout)
+  end
+
+  def output
+    @output ||=
+      Rails.root.join('tmp', 'youtube-dl', "#{Digest::MD5.hexdigest(url)}.mp3")
   end
 
   def image_url

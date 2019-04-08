@@ -3,14 +3,12 @@ require 'rails_helper'
 module Episodes
   RSpec.describe ProcessEpisode do
     subject(:service) do
-      described_class.new(episode: episode, audio_path: audio_path)
+      described_class.new(episode: episode)
     end
 
     let(:episode) { build(:episode) }
-    let(:audio_path) do
-      Rails.root.join('spec', 'support', 'uploads', 'audio.mp3')
-    end
     let(:youtube_dl_double) { instance_double(YoutubeDl) }
+    let(:output) { Rails.root.join('tmp', 'audio.mp3') }
     let(:image_url) { FFaker::Internet.http_url }
     let(:title) { FFaker::Lorem.word }
     let(:description) { FFaker::Lorem.paragraph }
@@ -19,9 +17,15 @@ module Episodes
     before do
       allow(YoutubeDl).to receive(:new).and_return(youtube_dl_double)
       allow(youtube_dl_double).to receive(:run!)
+      allow(youtube_dl_double).to receive(:output).and_return(output)
       allow(youtube_dl_double).to receive(:image_url).and_return(image_url)
       allow(youtube_dl_double).to receive(:title).and_return(title)
       allow(youtube_dl_double).to receive(:description).and_return(description)
+
+      FileUtils.cp(
+        Rails.root.join('spec', 'support', 'uploads', 'audio.mp3'),
+        output
+      )
 
       stub_request(:get, image_url).to_return(
         body: Rails.root.join('spec', 'support', 'uploads', 'image.png').open
@@ -30,6 +34,12 @@ module Episodes
 
     describe 'validations' do
       it { is_expected.to be_valid }
+    end
+
+    describe 'callbacks' do
+      it 'removes audio file' do
+        expect { service.run }.to change { File.exist?(output) }.to(false)
+      end
     end
 
     describe '#perform' do
@@ -54,7 +64,9 @@ module Episodes
       end
 
       context 'when there is not audio' do
-        let(:audio_path) { nil }
+        before do
+          FileUtils.rm(output)
+        end
 
         it 'fails the episode' do
           expect { service.perform }.to change(episode, :state).to('failed')

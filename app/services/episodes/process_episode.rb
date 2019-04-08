@@ -4,14 +4,14 @@ module Episodes
   class ProcessEpisode < ApplicationService
     attr_accessor :episode
 
-    attr_writer :audio_path
-
     validates :episode, presence: true
+
+    after_perform :remove_audio_file, if: :audio_file?
 
     def perform
       youtube_dl.run!
 
-      unless audio_file
+      unless audio_file?
         episode.fail!
         return
       end
@@ -23,7 +23,7 @@ module Episodes
     private
 
     def youtube_dl
-      @youtube_dl ||= YoutubeDl.new(url: episode.source_url, output: audio_path)
+      @youtube_dl ||= YoutubeDl.new(episode.source_url)
     end
 
     def attributes
@@ -35,14 +35,16 @@ module Episodes
       }
     end
 
-    def audio_file
-      File.open(audio_path) if File.exist?(audio_path)
+    def remove_audio_file
+      FileUtils.remove(youtube_dl.output)
     end
 
-    def audio_path
-      @audio_path ||= Rails.root.join(
-        'tmp', 'youtube-dl', "#{Digest::MD5.hexdigest(episode.source_url)}.mp3"
-      )
+    def audio_file
+      File.open(youtube_dl.output) if audio_file?
+    end
+
+    def audio_file?
+      File.exist?(youtube_dl.output)
     end
   end
 end
