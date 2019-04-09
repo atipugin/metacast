@@ -37,6 +37,10 @@ end
 
 group :development do
   gem 'annotate'
+  gem 'capistrano', '~> 3.11', require: false
+  gem 'capistrano-bundler', '~> 1.5', require: false
+  gem 'capistrano-rails', '~> 1.4', require: false
+  gem 'capistrano-rbenv', '~> 2.1', require: false
 end
 
 group :test do
