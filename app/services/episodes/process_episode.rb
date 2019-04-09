@@ -17,7 +17,8 @@ module Episodes
       end
 
       episode.assign_attributes(attributes)
-      episode.process!
+      episode.process
+      episode.save!
     end
 
     private
