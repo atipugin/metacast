@@ -34,6 +34,10 @@ class YoutubeDl
     @data['description']
   end
 
+  def author
+    @data['uploader']
+  end
+
   private
 
   def command

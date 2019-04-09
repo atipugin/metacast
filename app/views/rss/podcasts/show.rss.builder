@@ -8,6 +8,7 @@ xml.rss version: '2.0', 'xmlns:itunes' => 'http://www.itunes.com/dtds/podcast-1.
     @podcast.episodes.processed.each do |episode|
       xml.item do
         xml.title episode.title
+        xml.tag! 'itunes:author', episode.author
         xml.tag! 'itunes:summary' do
           xml.cdata! episode.description
         end

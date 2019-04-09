@@ -12,6 +12,7 @@
 #  image       :string
 #  title       :string
 #  description :text
+#  author      :string
 #
 
 FactoryBot.define do

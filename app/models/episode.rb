@@ -12,6 +12,7 @@
 #  image       :string
 #  title       :string
 #  description :text
+#  author      :string
 #
 
 class Episode < ApplicationRecord
@@ -21,7 +22,7 @@ class Episode < ApplicationRecord
 
   validates :source_url, presence: true
 
-  normalize :source_url, :title, :description
+  normalize :source_url, :title, :description, :author
 
   aasm column: 'state' do
     state :pending
