@@ -8,6 +8,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap', '~> 4.3.1'
 gem 'bootstrap_form', '>= 4.2.0'
 gem 'carrierwave'
+gem 'carrierwave-aws'
 gem 'clipboard-rails'
 gem 'devise'
 gem 'devise-i18n'
@@ -27,6 +28,7 @@ gem 'slim-rails'
 gem 'uglifier', '>= 1.3.0'
 
 group :development, :test do
+  gem 'dotenv-rails'
   gem 'factory_bot_rails'
   gem 'ffaker'
   gem 'i18n-tasks', '~> 0.9.29', require: false
