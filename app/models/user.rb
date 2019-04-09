@@ -13,4 +13,8 @@ class User < ApplicationRecord
   has_many :podcasts, dependent: :destroy
 
   devise :database_authenticatable, :registerable, :validatable
+
+  def name
+    email.split('@').first
+  end
 end

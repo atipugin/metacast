@@ -3,7 +3,7 @@ require 'sidekiq/web'
 Rails.application.routes.draw do
   mount Sidekiq::Web => '/sidekiq'
 
-  devise_for :users
+  devise_for :users, controllers: { registrations: 'users/registrations' }
   resources :podcasts do
     scope module: 'podcasts' do
       resources :episodes, only: :create

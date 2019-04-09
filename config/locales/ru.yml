@@ -1,3 +1,5 @@
 ---
 ru:
   app_name: Metacast
+  podcasts:
+    example_title: Подкаст им. %{name}
