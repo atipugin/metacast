@@ -17,6 +17,12 @@ html lang=I18n.locale
           span.navbar-toggler-icon
 
         #menu.collapse.navbar-collapse
+          - if user_signed_in?
+            ul.navbar-nav
+              li.nav-item
+                - with_options wrap_tag: 'li', wrap_class: 'nav-item', class: 'nav-link' do |wo|
+                  = wo.active_link_to t('.podcasts'), podcasts_path, active: :exclusive
+
           ul.navbar-nav.ml-auto
             - if user_signed_in?
               li.nav-item

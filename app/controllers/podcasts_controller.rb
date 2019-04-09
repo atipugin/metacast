@@ -2,6 +2,8 @@ class PodcastsController < ApplicationController
   before_action :authenticate_user!
   before_action :find_podcast, except: %i[index new create]
 
+  after_action :store_last_seen_podcast, only: :show
+
   def index
     @podcasts = current_user.podcasts
   end
@@ -52,5 +54,9 @@ class PodcastsController < ApplicationController
 
   def find_podcast
     @podcast = Podcast.find(params[:id])
+  end
+
+  def store_last_seen_podcast
+    session[:last_seen_podcast_id] = @podcast.id
   end
 end

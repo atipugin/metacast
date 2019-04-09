@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   end
 
   authenticated :user do
-    root 'podcasts#index'
+    root 'home#index'
   end
 
   root 'welcome#index'

@@ -2,6 +2,7 @@
 ru:
   layouts:
     application:
+      podcasts: Мои подкасты
       sign_in: Вход
       sign_out: Выход
       sign_up: Регистрация
