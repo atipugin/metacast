@@ -17,9 +17,8 @@ class YoutubeDl
     @data = JSON.parse(stdout)
   end
 
-  def output
-    @output ||=
-      Rails.root.join('tmp', 'youtube-dl', "#{Digest::MD5.hexdigest(url)}.mp3")
+  def audio_path
+    audio_dir.join("#{audio_name}.#{extension}")
   end
 
   def image_url
@@ -42,12 +41,24 @@ class YoutubeDl
 
   def command
     <<~SHELL
-      youtube-dl \
-        --extract-audio \
-        --audio-format mp3 \
-        --print-json \
-        --output #{output} \
-        #{url}
+    youtube-dl \
+      --extract-audio \
+      --audio-format #{extension} \
+      --print-json \
+      --output \'#{audio_dir.join(audio_name)}.%(ext)s\' \
+      #{url}
     SHELL
+  end
+
+  def extension
+    :mp3
+  end
+
+  def audio_dir
+    @audio_dir ||= Rails.root.join('tmp', 'youtube-dl')
+  end
+
+  def audio_name
+    @audio_name ||= Digest::MD5.hexdigest(url)
   end
 end

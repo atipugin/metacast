@@ -38,15 +38,15 @@ module Episodes
     end
 
     def remove_audio_file
-      FileUtils.remove(youtube_dl.output)
+      FileUtils.remove(youtube_dl.audio_path)
     end
 
     def audio_file
-      File.open(youtube_dl.output) if audio_file?
+      File.open(youtube_dl.audio_path) if audio_file?
     end
 
     def audio_file?
-      File.exist?(youtube_dl.output)
+      File.exist?(youtube_dl.audio_path)
     end
   end
 end
