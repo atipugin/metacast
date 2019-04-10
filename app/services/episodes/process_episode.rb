@@ -33,7 +33,8 @@ module Episodes
         remote_image_url: youtube_dl.image_url,
         title: youtube_dl.title,
         description: youtube_dl.description,
-        author: youtube_dl.author
+        author: youtube_dl.author,
+        duration: youtube_dl.duration
       }
     end
 

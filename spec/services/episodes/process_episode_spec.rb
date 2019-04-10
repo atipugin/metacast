@@ -13,6 +13,7 @@ module Episodes
     let(:title) { FFaker::Lorem.word }
     let(:description) { FFaker::Lorem.paragraph }
     let(:author) { FFaker::Name.name }
+    let(:duration) { 1.hour.to_i }
 
     # TODO: Move YoutubeDl stubs to shared context
     before do
@@ -23,6 +24,7 @@ module Episodes
       allow(youtube_dl_double).to receive(:title).and_return(title)
       allow(youtube_dl_double).to receive(:description).and_return(description)
       allow(youtube_dl_double).to receive(:author).and_return(author)
+      allow(youtube_dl_double).to receive(:duration).and_return(duration)
 
       FileUtils.cp(
         Rails.root.join('spec', 'support', 'uploads', 'audio.mp3'),
@@ -67,6 +69,10 @@ module Episodes
 
       it 'assigns author' do
         expect { service.perform }.to change(episode, :author)
+      end
+
+      it 'assigns duration' do
+        expect { service.perform }.to change(episode, :duration)
       end
 
       context 'when there is not audio' do

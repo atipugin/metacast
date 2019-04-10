@@ -16,6 +16,7 @@ xml.rss version: '2.0', 'xmlns:itunes' => 'http://www.itunes.com/dtds/podcast-1.
         xml.enclosure url: episode.audio_url
         xml.guid episode_url(episode)
         xml.pubDate episode.created_at.rfc2822
+        xml.tag! 'itunes:duration', Time.at(episode.duration).utc.strftime('%H:%M:%S')
       end
     end
   end

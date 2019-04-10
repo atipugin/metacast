@@ -13,6 +13,7 @@
 #  title       :string
 #  description :text
 #  author      :string
+#  duration    :integer
 #
 
 FactoryBot.define do
