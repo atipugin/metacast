@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :episodes, only: :destroy
+  resources :episodes, only: %i[show destroy]
 
   namespace :rss, defaults: { format: 'rss' } do
     resources :podcasts, only: :show
