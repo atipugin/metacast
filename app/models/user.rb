@@ -11,8 +11,34 @@
 
 class User < ApplicationRecord
   has_many :podcasts, dependent: :destroy
+  has_many :authentications, dependent: :destroy
 
-  devise :database_authenticatable, :registerable, :validatable
+  devise :database_authenticatable, :registerable, :validatable, :omniauthable
+
+  def self.from_omniauth(auth) # rubocop:disable Metrics/AbcSize, Metrics/MethodLength, Metrics/LineLength
+    left_joins(:authentications)
+      .where(email: auth.info.email)
+      .or(
+        left_joins(:authentications)
+          .where(authentications: { provider: auth.provider, uid: auth.uid })
+      )
+      .first_or_create do |user|
+        omniauth_user = OmniauthUser.new(auth)
+        user.assign_attributes(omniauth_user.attributes)
+        user.password = Devise.friendly_token
+        user.skip_confirmation! if omniauth_user.confirmed?
+      end
+  end
+
+  def self.new_with_session(params, session)
+    super.tap do |user|
+      if session['devise.auth_data']
+        omniauth_user = OmniauthUser.new(session['devise.auth_data'])
+        user.email ||= omniauth_user.email
+        user.assign_attributes(omniauth_user.attributes.except(:email))
+      end
+    end
+  end
 
   def name
     email.split('@').first
