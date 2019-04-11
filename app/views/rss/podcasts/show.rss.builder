@@ -13,7 +13,7 @@ xml.rss version: '2.0', 'xmlns:itunes' => 'http://www.itunes.com/dtds/podcast-1.
           xml.cdata! episode.description
         end
         xml.tag! 'itunes:image', href: episode.image_url(:itunes)
-        xml.enclosure url: episode.audio_url
+        xml.enclosure url: episode.audio_url, type: episode.audio_content_type, length: episode.audio_size
         xml.guid episode_url(episode)
         xml.pubDate episode.created_at.rfc2822
         xml.tag! 'itunes:duration', Time.at(episode.duration).utc.strftime('%H:%M:%S')
