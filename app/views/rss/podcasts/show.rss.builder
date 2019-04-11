@@ -10,8 +10,10 @@ xml.rss version: '2.0', 'xmlns:itunes' => 'http://www.itunes.com/dtds/podcast-1.
       xml.item do
         xml.title episode.title
         xml.tag! 'itunes:author', episode.author
-        xml.tag! 'itunes:summary' do
-          xml.cdata! episode.description
+        if episode.description?
+          xml.tag! 'itunes:summary' do
+            xml.cdata! episode.description
+          end
         end
         xml.tag! 'itunes:image', href: episode.image_url(:itunes)
         xml.enclosure url: episode.audio_url, type: episode.audio_content_type, length: episode.audio_size
