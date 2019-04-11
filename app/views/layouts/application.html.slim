@@ -28,9 +28,10 @@ html lang=I18n.locale
               li.nav-item
                 = link_to t('.sign_out'), destroy_user_session_path, class: 'nav-link', method: Devise.sign_out_via
             - else
-              - with_options wrap_tag: 'li', wrap_class: 'nav-item', class: 'nav-link' do |wo|
-                = wo.active_link_to t('.sign_in'), new_user_session_path
-                = wo.active_link_to t('.sign_up'), new_user_registration_path
+              li.nav-item
+                = link_to user_google_oauth2_omniauth_authorize_path, class: 'nav-link' do
+                  = icon 'fab', 'google'
+                  =< t '.sign_in'
 
     main.py-3
       .container
