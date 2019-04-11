@@ -18,7 +18,7 @@
 
             .modal-body
               = bootstrap_form_for [@podcast, Episode.new] do |f|
-                = f.url_field :source_url
+                = f.text_field :source_url
                 = f.primary t('.new_episode.submit')
 
     .mb-3

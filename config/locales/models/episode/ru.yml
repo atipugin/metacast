@@ -4,3 +4,6 @@ ru:
     attributes:
       episode:
         source_url: Ссылка на источник
+    help:
+      episode:
+        source_url: Вставьте ссылку на видео или аудио (например, YouTube, SoundCloud и т.п.)

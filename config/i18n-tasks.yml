@@ -98,7 +98,7 @@ search:
 
 ## Consider these keys used:
 ignore_unused:
-- 'activerecord.attributes.*'
+- 'activerecord.{attributes,help}.*'
 # - '{devise,kaminari,will_paginate}.*'
 # - 'simple_form.{yes,no}'
 # - 'simple_form.{placeholders,hints,labels}.*'
