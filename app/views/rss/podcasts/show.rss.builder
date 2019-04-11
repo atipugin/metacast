@@ -4,6 +4,7 @@ xml.rss version: '2.0', 'xmlns:itunes' => 'http://www.itunes.com/dtds/podcast-1.
   xml.channel do
     xml.title @podcast.title
     xml.link podcast_url(@podcast)
+    xml.tag! 'itunes:image', href: @podcast.image_url(:itunes)
 
     @podcast.episodes.processed.each do |episode|
       xml.item do

@@ -3,4 +3,6 @@ ru:
   activerecord:
     attributes:
       podcast:
+        image: Обложка
+        remove_image: Удалить обложку
         title: Название

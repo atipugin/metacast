@@ -8,6 +8,7 @@
 #  user_id    :bigint(8)        not null
 #  title      :string           not null
 #  token      :string           not null
+#  image      :string
 #
 
 class Podcast < ApplicationRecord
@@ -20,4 +21,6 @@ class Podcast < ApplicationRecord
   has_secure_token
 
   normalize :title
+
+  mount_uploader :image, ImageUploader
 end

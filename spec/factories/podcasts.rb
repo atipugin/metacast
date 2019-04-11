@@ -8,6 +8,7 @@
 #  user_id    :bigint(8)        not null
 #  title      :string           not null
 #  token      :string           not null
+#  image      :string
 #
 
 FactoryBot.define do

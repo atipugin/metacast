@@ -15,7 +15,7 @@ class PodcastsController < ApplicationController
 
   def create
     authorize(Podcast)
-    @podcast = Podcast.new(podcast_params.merge(user: current_user))
+    @podcast = Podcast.new(create_params.merge(user: current_user))
     if @podcast.save
       redirect_to podcast_path(@podcast), notice: t('.notice')
     else
@@ -33,7 +33,7 @@ class PodcastsController < ApplicationController
 
   def update
     authorize(@podcast)
-    if @podcast.update(podcast_params)
+    if @podcast.update(update_params)
       redirect_to edit_podcast_path(@podcast), notice: t('.notice')
     else
       render :edit
@@ -48,8 +48,12 @@ class PodcastsController < ApplicationController
 
   private
 
-  def podcast_params
+  def create_params
     params.require(:podcast).permit(:title)
+  end
+
+  def update_params
+    params.require(:podcast).permit(:title, :image, :image_cache, :remove_image)
   end
 
   def find_podcast
