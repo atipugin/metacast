@@ -45,12 +45,12 @@ class YoutubeDl
 
   def command
     <<~SHELL
-    youtube-dl \
-      --extract-audio \
-      --audio-format #{extension} \
-      --print-json \
-      --output \'#{audio_dir.join(audio_name)}.%(ext)s\' \
-      #{url}
+      youtube-dl \
+        --extract-audio \
+        --audio-format #{extension} \
+        --print-json \
+        --output \'#{audio_dir.join(audio_name)}.%(ext)s\' \
+        #{url}
     SHELL
   end
 
