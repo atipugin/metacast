@@ -1,5 +1,13 @@
 .list-group-item
-  p = episode.source_url
-  ul.list-inline.mb-0
-    li.list-inline-item
-      = link_to t('.destroy'), episode_path(episode), class: 'text-danger', method: :delete
+  .media
+    = image_tag episode.image_url(:thumb), class: 'rounded mr-3', size: 64
+    .media-body
+      h2.h4.mb-0 = episode.title
+      p.text-muted = episode.author
+      ul.list-inline
+        li.list-inline-item
+          = link_to episode.source, episode.source_url, title: episode.source_url, data: { toggle: 'tooltip' }, target: '_blank'
+        li.list-inline-item
+          | &middot;
+        li.list-inline-item
+          = link_to t('.destroy'), episode_path(episode), class: 'text-danger', method: :delete

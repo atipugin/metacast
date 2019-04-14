@@ -2,15 +2,15 @@
 
 .row
   .col-lg-8.offset-lg-2
-    .border-bottom.mb-3
-      h1.h3 = t '.title'
-
     .card.mb-3
+      .card-header
+        = t '.title'
+
       - if @podcasts.present?
         .list-group.list-group-flush
-          == render @podcasts
+          == render PodcastDecorator.decorate_collection(@podcasts)
       - else
         .card-body
-          p.card-text.text-muted = t '.empty'
+          p.card-text.text-muted.text-center = t '.empty'
 
     = link_to t('.new'), new_podcast_path, class: 'btn btn-primary'

@@ -27,6 +27,5 @@ ru:
       new_episode:
         submit: Добавить
         title: Новый эпизод
-      rss_url: Ссылка на подкаст
     update:
       notice: Подкаст успешно обновлен.

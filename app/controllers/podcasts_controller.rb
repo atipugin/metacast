@@ -4,6 +4,8 @@ class PodcastsController < ApplicationController
 
   after_action :store_last_seen_podcast, only: :show
 
+  decorates_assigned :podcast
+
   def index
     @podcasts = current_user.podcasts
   end

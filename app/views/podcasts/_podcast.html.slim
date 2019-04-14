@@ -1,1 +1,6 @@
-= link_to podcast.title, podcast_path(podcast), class: 'list-group-item list-group-item-action'
+= link_to podcast_path(podcast), class: 'list-group-item list-group-item-action' do
+  .media
+    = image_tag podcast.image_url(:thumb), class: 'rounded mr-3', size: 64
+    .media-body
+      h2.h4.mb-0 = podcast.title
+      p.text-muted = podcast.episodes_count

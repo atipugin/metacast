@@ -6,4 +6,5 @@
 
 $(document).ready(function() {
   new Clipboard(".js-clipboard");
+  $("[data-toggle=tooltip]").tooltip();
 });

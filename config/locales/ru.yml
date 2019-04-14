@@ -1,5 +1,15 @@
 ---
 ru:
   app_name: Metacast
+  counts:
+    episodes:
+      few: "%{count} эпизода"
+      many: "%{count} эпизодов"
+      one: "%{count} эпизод"
+      other: "%{count} эпизодов"
+      zero: Нет эпизодов
+  none:
+    author: Автор не указан
+    title: Без названия
   podcasts:
     example_title: Подкаст им. %{name}

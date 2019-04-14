@@ -2,7 +2,7 @@ class HomeController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    redirect_to last_podcast ? podcast_path(last_podcast) : podcast_path
+    redirect_to last_podcast ? podcast_path(last_podcast) : podcasts_path
   end
 
   private
