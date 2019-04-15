@@ -10,7 +10,7 @@ class ImageUploader < ApplicationUploader
   end
 
   def default_url
-    ActionController::Base.helpers.asset_path(
+    ActionController::Base.helpers.asset_url(
       File.join(
         'fallback', 'image', [version_name, 'default.png'].compact.join('_')
       )
