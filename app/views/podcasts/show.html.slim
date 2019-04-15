@@ -42,7 +42,7 @@
 
       - if @podcast.episodes.present?
         ul.list-group.list-group-flush
-          == render EpisodeDecorator.decorate_collection(@podcast.episodes)
+          == render EpisodeDecorator.decorate_collection(@podcast.episodes.default_order)
       - else
         .card-body
           p.card-text.text-muted.text-center = t '.episodes.empty'

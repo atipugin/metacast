@@ -27,6 +27,8 @@ class Episode < ApplicationRecord
 
   before_save :set_audio_content_type_and_size
 
+  scope :default_order, -> { order(created_at: :desc) }
+
   normalize :source_url, :title, :description, :author
 
   aasm column: 'state' do
