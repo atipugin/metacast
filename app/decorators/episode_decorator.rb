@@ -6,4 +6,8 @@ class EpisodeDecorator < ApplicationDecorator
   def author
     object.author || t('none.author')
   end
+
+  def state
+    aasm.human_state
+  end
 end

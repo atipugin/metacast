@@ -4,6 +4,9 @@ ru:
     attributes:
       episode:
         source_url: Ссылка на источник
+        state/failed: Ошибка
+        state/pending: Обрабатывается
+        state/processed: Готов
     help:
       episode:
         source_url: Вставьте ссылку на видео или аудио (например, YouTube, SoundCloud и т.п.)
