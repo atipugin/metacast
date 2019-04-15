@@ -10,15 +10,11 @@ module Episodes
 
     def perform
       youtube_dl.run!
-
-      unless audio_file?
-        episode.fail!
-        return
-      end
-
       episode.assign_attributes(attributes)
       episode.process
       episode.save!
+    rescue YoutubeDl::Error
+      episode.fail!
     end
 
     private

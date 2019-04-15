@@ -75,9 +75,9 @@ module Episodes
         expect { service.perform }.to change(episode, :duration)
       end
 
-      context 'when there is not audio' do
+      context 'when youtube_dl fails' do
         before do
-          FileUtils.rm(audio_path)
+          allow(youtube_dl_double).to receive(:run!).and_raise(YoutubeDl::Error)
         end
 
         it 'fails the episode' do
