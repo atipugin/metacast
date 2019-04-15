@@ -4,4 +4,6 @@ ru:
     destroy:
       notice: Эпизод успешно удален.
     episode:
-      destroy: Удалить
+      destroy:
+        confirm: Уверены?
+        link: Удалить
