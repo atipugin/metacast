@@ -2,6 +2,8 @@
 ru:
   layouts:
     application:
+      about: О сервисе
+      copyright_html: "&copy; %{year} %{app_name}"
       podcasts: Мои подкасты
       sign_in: Войти
       sign_out: Выйти

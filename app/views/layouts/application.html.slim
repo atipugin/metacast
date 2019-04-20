@@ -9,10 +9,10 @@ html lang=I18n.locale
 
     = stylesheet_link_tag 'application'
 
-  body.bg-light
-    nav.navbar.navbar-expand-lg.navbar-light.bg-white.border-bottom
+  body
+    nav.navbar.navbar-expand-lg.navbar-light.border-bottom
       .container
-        = link_to t('app_name'), root_path, class: 'navbar-brand'
+        = link_to t('app_name'), root_path, class: 'navbar-brand font-weight-bold'
         = button_tag class: 'navbar-toggler', type: 'button', data: { toggle: 'collapse', target: '#menu' } do
           span.navbar-toggler-icon
 
@@ -33,7 +33,7 @@ html lang=I18n.locale
                   = icon 'fab', 'google'
                   =< t '.sign_in'
 
-    main.py-3
+    main.bg-light.py-3
       .container
         - if flash.present?
           - flash.each do |key, message|
@@ -46,8 +46,11 @@ html lang=I18n.locale
         == yield
 
     footer.border-top.py-3
-      .container
-        | &copy;
-        =< Date.today.year
+      .container.text-center
+        ul.list-inline
+          li.list-inline-item
+            = link_to t('.about'), nil
+
+        p.mb-0 = t '.copyright_html', year: Date.today.year, app_name: t('app_name')
 
     = javascript_include_tag 'application'
