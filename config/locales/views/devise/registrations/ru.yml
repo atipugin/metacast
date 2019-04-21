@@ -3,5 +3,8 @@ ru:
   devise:
     registrations:
       new:
+        sign_in_html: Уже есть аккаунт? <a href="%{url}">Войти</a>
+        sign_up_via:
+          google: Войти с помощью Google
         submit: Создать аккаунт
         title: Регистрация

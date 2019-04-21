@@ -3,5 +3,8 @@ ru:
   devise:
     sessions:
       new:
+        sign_in_via:
+          google: Войти с помощью Google
+        sign_up_html: Нет аккаунта? <a href="%{url}">Зарегистрироваться</a>
         submit: Войти
         title: Вход
