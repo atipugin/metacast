@@ -2,14 +2,17 @@
 #
 # Table name: users
 #
-#  id                 :bigint(8)        not null, primary key
-#  created_at         :datetime         not null
-#  updated_at         :datetime         not null
-#  email              :string           not null
-#  encrypted_password :string           not null
+#  id                   :bigint(8)        not null, primary key
+#  created_at           :datetime         not null
+#  updated_at           :datetime         not null
+#  email                :string           not null
+#  encrypted_password   :string           not null
+#  last_podcast_seen_id :integer
 #
 
 class User < ApplicationRecord
+  belongs_to :last_podcast_seen, class_name: 'Podcast', optional: true
+
   has_many :podcasts, dependent: :destroy
   has_many :authentications, dependent: :destroy
 

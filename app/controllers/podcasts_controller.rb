@@ -2,7 +2,7 @@ class PodcastsController < ApplicationController
   before_action :authenticate_user!
   before_action :find_podcast, except: %i[index new create]
 
-  after_action :store_last_seen_podcast, only: :show
+  after_action :store_last_podcast_seen, only: :show
 
   decorates_assigned :podcast
 
@@ -62,7 +62,9 @@ class PodcastsController < ApplicationController
     @podcast = Podcast.find(params[:id])
   end
 
-  def store_last_seen_podcast
-    session[:last_seen_podcast_id] = @podcast.id
+  def store_last_podcast_seen
+    return if current_user.last_podcast_seen_id == @podcast.id
+
+    current_user.update(last_podcast_seen: @podcast)
   end
 end
