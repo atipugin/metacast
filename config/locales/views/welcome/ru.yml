@@ -2,4 +2,8 @@
 ru:
   welcome:
     index:
+      intro:
+        link: Начать пользоваться
+        text: Metacast превращает видео с YouTube (и не только) в аудио-подкаст, доступный даже оффлайн.
+        title: Ваш YouTube-подкаст
       title: Привет

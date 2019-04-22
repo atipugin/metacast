@@ -1,1 +1,11 @@
-h1 = title t('.title')
+- title t('.title')
+
+.row
+  .col-lg-6
+    = image_tag 'intro-iphone.png', class: 'img-fluid'
+
+  .col-lg-6
+    .jumbotron.bg-transparent
+      h1.display-4 = t '.intro.title'
+      p.lead = t '.intro.text'
+      = link_to t('.intro.link'), new_user_session_path, class: 'btn btn-primary btn-lg'
