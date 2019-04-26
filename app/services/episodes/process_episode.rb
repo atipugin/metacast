@@ -7,14 +7,15 @@ module Episodes
     validates :episode, presence: true
 
     after_perform :remove_audio_file, if: :audio_file?
+    after_perform :send_email_notification, if: -> { episode.processed? }
 
     def perform
       youtube_dl.run!
       episode.assign_attributes(attributes)
       episode.process
       episode.save!
-    rescue YoutubeDl::Error => exception
-      Raven.capture_exception(exception)
+    rescue YoutubeDl::Error => e
+      Raven.capture_exception(e)
       episode.fail!
     end
 
@@ -45,6 +46,10 @@ module Episodes
 
     def audio_file?
       File.exist?(youtube_dl.audio_path)
+    end
+
+    def send_email_notification
+      EpisodeMailer.episode_processed(episode).deliver_later
     end
   end
 end

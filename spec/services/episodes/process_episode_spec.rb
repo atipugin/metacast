@@ -44,6 +44,11 @@ module Episodes
       it 'removes audio file' do
         expect { service.run }.to change { File.exist?(audio_path) }.to(false)
       end
+
+      it 'sends email notification' do
+        expect { service.run }
+          .to change(Sidekiq::Queues['mailers'], :size).by(1)
+      end
     end
 
     describe '#perform' do
