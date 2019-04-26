@@ -11,6 +11,10 @@
 #  reset_password_token   :string
 #  reset_password_sent_at :datetime
 #  remember_created_at    :datetime
+#  confirmation_token     :string
+#  confirmed_at           :datetime
+#  confirmation_sent_at   :datetime
+#  unconfirmed_email      :string
 #
 
 class User < ApplicationRecord
@@ -24,7 +28,8 @@ class User < ApplicationRecord
          :validatable,
          :omniauthable,
          :recoverable,
-         :rememberable
+         :rememberable,
+         :confirmable
 
   def self.from_omniauth(auth) # rubocop:disable Metrics/AbcSize, Metrics/MethodLength, Metrics/LineLength
     left_joins(:authentications)

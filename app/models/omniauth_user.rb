@@ -12,6 +12,6 @@ class OmniauthUser
   end
 
   def confirmed?
-    auth.info.email?
+    @auth.info.email?
   end
 end

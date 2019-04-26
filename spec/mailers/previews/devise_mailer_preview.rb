@@ -3,6 +3,10 @@ class DeviseMailerPreview < ActionMailer::Preview
     Devise.mailer.reset_password_instructions(record, token)
   end
 
+  def confirmation_instructions
+    Devise.mailer.confirmation_instructions(record, token)
+  end
+
   private
 
   def record
