@@ -1,0 +1,11 @@
+---
+ru:
+  devise:
+    passwords:
+      new:
+        sign_in_html: Вспомнили пароль? <a href="%{url}">Войти</a>
+        submit: Продолжить
+        title: Сброс пароля
+      edit:
+        title: Новый пароль
+        submit: Сохранить

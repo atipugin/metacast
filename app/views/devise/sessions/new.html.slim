@@ -14,7 +14,7 @@
       .card-body
         = bootstrap_form_for resource, as: resource_name, url: session_path(resource_name) do |f|
           = f.email_field :email
-          = f.password_field :password
+          = f.password_field :password, help: link_to(t('.forgot_password'), new_password_path(resource))
           = f.submit t('.submit'), class: 'btn btn-primary btn-block'
 
     p.text-center

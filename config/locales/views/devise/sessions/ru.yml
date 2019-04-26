@@ -3,6 +3,7 @@ ru:
   devise:
     sessions:
       new:
+        forgot_password: Не помню пароль
         sign_in_via:
           google: Войти с помощью Google
         sign_up_html: Нет аккаунта? <a href="%{url}">Зарегистрироваться</a>

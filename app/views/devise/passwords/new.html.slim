@@ -1,0 +1,15 @@
+- title t('.title')
+
+.row
+  .col-lg-4.offset-lg-4
+    .border-bottom.mb-3
+      h1.h3 = t '.title'
+
+    .card.mb-3
+      .card-body
+        = bootstrap_form_for resource, as: resource_name, url: password_path(resource_name) do |f|
+          = f.email_field :email
+          = f.submit t('.submit'), class: 'btn btn-primary btn-block'
+
+    p.text-center
+      = t '.sign_in_html', url: new_user_session_path

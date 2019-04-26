@@ -1,0 +1,11 @@
+---
+development:
+  default_url_options:
+    host: localhost:3000
+  delivery_method: smtp
+  smtp_settings:
+    host: localhost
+    port: 1025
+
+test:
+  delivery_method: test

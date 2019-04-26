@@ -2,12 +2,14 @@
 #
 # Table name: users
 #
-#  id                   :bigint(8)        not null, primary key
-#  created_at           :datetime         not null
-#  updated_at           :datetime         not null
-#  email                :string           not null
-#  encrypted_password   :string           not null
-#  last_podcast_seen_id :integer
+#  id                     :bigint(8)        not null, primary key
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#  email                  :string           not null
+#  encrypted_password     :string           not null
+#  last_podcast_seen_id   :integer
+#  reset_password_token   :string
+#  reset_password_sent_at :datetime
 #
 
 class User < ApplicationRecord
@@ -16,7 +18,11 @@ class User < ApplicationRecord
   has_many :podcasts, dependent: :destroy
   has_many :authentications, dependent: :destroy
 
-  devise :database_authenticatable, :registerable, :validatable, :omniauthable
+  devise :database_authenticatable,
+         :registerable,
+         :validatable,
+         :omniauthable,
+         :recoverable
 
   def self.from_omniauth(auth) # rubocop:disable Metrics/AbcSize, Metrics/MethodLength, Metrics/LineLength
     left_joins(:authentications)
