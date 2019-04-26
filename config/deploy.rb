@@ -21,7 +21,7 @@ set :deploy_to, "~/#{fetch(:application)}"
 # set :pty, true
 
 # Default value for :linked_files is []
-append :linked_files, "config/database.yml", "config/puma.rb", ".rbenv-vars"
+append :linked_files, "config/database.yml", "config/email.yml", "config/puma.rb", ".rbenv-vars"
 
 # Default value for linked_dirs is []
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
