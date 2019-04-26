@@ -4,8 +4,10 @@ development:
     host: localhost:3000
   delivery_method: smtp
   smtp_settings:
-    host: localhost
+    address: localhost
     port: 1025
 
 test:
+  default_url_options:
+    host: metacast.test
   delivery_method: test
