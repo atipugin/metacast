@@ -5,6 +5,10 @@
 //= require clipboard
 
 $(document).ready(function() {
-  new Clipboard(".js-clipboard");
+  var copyRSSURL = new Clipboard(".js-copy-rss-url");
+  copyRSSURL.on("success", function(event) {
+    $("#rss-url-instructions").modal("show");
+  });
+
   $("[data-toggle=tooltip]").tooltip();
 });

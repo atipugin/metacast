@@ -14,8 +14,18 @@
           = icon 'far', 'rss'
       = text_field_tag nil, rss_podcast_url(@podcast.token), class: 'form-control', id: 'rss-url'
       .input-group-append
-        = button_tag class: 'btn btn-secondary js-clipboard', type: 'button', data: { clipboard_target: '#rss-url' } do
+        = button_tag class: 'btn btn-secondary js-copy-rss-url', type: 'button', data: { clipboard_target: '#rss-url' } do
           = icon 'far', 'copy'
+
+    #rss-url-instructions.modal.fade
+      .modal-dialog
+        .modal-content
+          .modal-header
+            h3.modal-title.h5 = t '.rss_url_instructions.title'
+            = button_tag raw('&times;'), class: 'close', type: 'button', data: { dismiss: 'modal' }
+
+          .modal-body
+            = t '.rss_url_instructions.body'
 
     .btn-group.w-100.mb-3
       = button_tag t('.add_episode'), class: 'btn btn-primary btn-block', type: 'button', data: { toggle: 'modal', target: '#new-episode' }
