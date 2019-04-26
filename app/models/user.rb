@@ -29,7 +29,8 @@ class User < ApplicationRecord
          :omniauthable,
          :recoverable,
          :rememberable,
-         :confirmable
+         :confirmable,
+         :async
 
   def self.from_omniauth(auth) # rubocop:disable Metrics/AbcSize, Metrics/MethodLength, Metrics/LineLength
     left_joins(:authentications)
