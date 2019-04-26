@@ -13,7 +13,8 @@ module Episodes
       episode.assign_attributes(attributes)
       episode.process
       episode.save!
-    rescue YoutubeDl::Error
+    rescue YoutubeDl::Error => exception
+      Raven.capture_exception(exception)
       episode.fail!
     end
 
