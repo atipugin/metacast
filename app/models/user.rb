@@ -10,6 +10,7 @@
 #  last_podcast_seen_id   :integer
 #  reset_password_token   :string
 #  reset_password_sent_at :datetime
+#  remember_created_at    :datetime
 #
 
 class User < ApplicationRecord
@@ -22,7 +23,8 @@ class User < ApplicationRecord
          :registerable,
          :validatable,
          :omniauthable,
-         :recoverable
+         :recoverable,
+         :rememberable
 
   def self.from_omniauth(auth) # rubocop:disable Metrics/AbcSize, Metrics/MethodLength, Metrics/LineLength
     left_joins(:authentications)

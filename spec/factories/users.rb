@@ -10,6 +10,7 @@
 #  last_podcast_seen_id   :integer
 #  reset_password_token   :string
 #  reset_password_sent_at :datetime
+#  remember_created_at    :datetime
 #
 
 FactoryBot.define do
