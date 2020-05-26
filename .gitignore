@@ -23,3 +23,10 @@ config/database.yml
 public/uploads/
 .env
 config/email.yml
+
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity

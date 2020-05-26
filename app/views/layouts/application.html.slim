@@ -7,7 +7,7 @@ html lang=I18n.locale
     = csp_meta_tag
     = display_meta_tags site: t('app_name'), reverse: true
 
-    = stylesheet_link_tag 'application'
+    = stylesheet_pack_tag 'application'
 
   body
     nav.navbar.navbar-expand-lg.navbar-light.border-bottom
@@ -51,4 +51,4 @@ html lang=I18n.locale
 
         p.mb-0 = t '.copyright_html', year: Date.today.year, app_name: t('app_name')
 
-    = javascript_include_tag 'application'
+    = javascript_pack_tag 'application'
