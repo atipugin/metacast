@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   end
 
   authenticated :user do
-    root 'home#index'
+    root 'home#index', as: :authenticated_root
   end
 
   root 'welcome#index'
