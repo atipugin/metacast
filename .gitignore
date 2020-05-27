@@ -30,3 +30,4 @@ config/email.yml
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+config/deploy/production.rb
