@@ -11,11 +11,11 @@
     .input-group.mb-3
       .input-group-prepend
         .input-group-text
-          = icon 'fas', 'rss'
+          i.fas.fa-rss
       = text_field_tag nil, rss_podcast_url(@podcast.token), class: 'form-control', id: 'rss-url'
       .input-group-append
         = button_tag class: 'btn btn-secondary js-copy-rss-url', type: 'button', data: { clipboard_target: '#rss-url' } do
-          = icon 'far', 'copy'
+          i.far.fa-copy
 
     #rss-url-instructions.modal.fade
       .modal-dialog

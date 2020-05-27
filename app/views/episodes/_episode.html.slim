@@ -8,7 +8,7 @@
           p.text-muted = episode.author
 
         div
-          = episode_state_icon episode.object.state, episode.state
+          i class=episode_state_icon_class_for(episode.object.state) title=episode.state data={ toggle: 'tooltip' }
 
       ul.list-inline.small
         li.list-inline-item

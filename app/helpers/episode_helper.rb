@@ -1,13 +1,9 @@
 module EpisodeHelper
-  def episode_state_icon(state, title)
-    h = { title: title, data: { toggle: 'tooltip' } }
+  def episode_state_icon_class_for(state)
     case state.to_s
-    when 'pending'
-      icon('far', 'clock', h.merge(class: 'text-muted'))
-    when 'processed'
-      icon('far', 'check-circle', h.merge(class: 'text-success'))
-    when 'failed'
-      icon('far', 'times-circle', h.merge(class: 'text-danger'))
+    when 'pending' then 'far fa-clock text-muted'
+    when 'processed' then 'far fa-check-circle text-success'
+    when 'failed' then 'far fa-times-circle text-danger'
     end
   end
 end
